@@ -1,0 +1,19 @@
+LXI B, 0x0000
+LHLD 0x1000
+XCHG
+LHLD 0x1002
+DV:	MOV A, L
+	SUB E
+    MOV L, A
+    MOV A, H
+    SBB D
+    MOV H, A
+    JC SK
+    INX B
+    JMP DV
+SK:	DAD D
+	SHLD 0x1042
+    MOV L, C
+    MOV H, B
+    SHLD 0x1040
+    HLT
