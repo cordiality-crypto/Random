@@ -1,0 +1,13 @@
+MVI C, 0x08
+LXI H, 0xF007
+LXI D, 0xF0F0
+CHEC:	MOV A, C
+  		CPI 0x00
+  		JNZ LOOP
+      HLT
+LOOP:	MOV A, M
+		  STAX D
+      INX D
+      DCX H
+      DCR C
+      JMP CHEC ;C IS SIZE, H IS ENDING ADDR, D IS DESIRED ADDR
